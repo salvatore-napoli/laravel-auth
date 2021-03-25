@@ -25,12 +25,11 @@
 					<td>{{$vegetable->type}}</td>
 					<td>{{$vegetable->brand}}</td>
 					<td>{{$vegetable->price}}€</td>
-					<td>
-						<a href="{{ route('vegetables.show', compact('vegetable')) }}">
-							<i class="far fa-eye"></i>
-						</a>
-					</td>
 				</tr>
 			@endforeach
 	  </tbody>
 	</table>
+
+	@if (Auth::check())
+		<a href="{{ route('vegetables.create')}}">Create new</a>
+	@endif

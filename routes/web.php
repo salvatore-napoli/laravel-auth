@@ -21,4 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/vegetables', VegetablesController::class);
+Route::get('/vegetables', 'PublicController@index')->name('vegetables.index');
+
+
+Route::prefix('admin')
+->namespace('Admin')
+->middleware('auth')
+->group(function () {
+  Route::resource('vegetables', VegetablesController::class);
+});
